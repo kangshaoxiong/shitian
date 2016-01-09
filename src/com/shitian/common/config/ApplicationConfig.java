@@ -9,6 +9,7 @@ import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 import com.shitian.common.model._MappingKit;
@@ -19,7 +20,7 @@ import com.shitian.modules.supervisor.route.SupervisorRoutes;
 import com.shitian.modules.wechat.route.WeChatRoutes;
 /**
  * API引导式配置
- * @author Administrator
+ * @author kangshaoxiong
  *
  */
 public class ApplicationConfig extends JFinalConfig {
@@ -33,8 +34,10 @@ public class ApplicationConfig extends JFinalConfig {
 		PropKit.use("applicationConfig.properties");
 		// 配制运行模式
 		me.setDevMode(PropKit.getBoolean("devMode", false));
-		// 系统视图模型
-		me.setViewType(ViewType.JSP);
+		// 系统视图模型(默认使用FREE_MARKER)
+		//me.setViewType(ViewType.FREE_MARKER);
+		// 视图存放路径
+		me.setBaseViewPath("/WEB-INF/view");
 	}
 
 	/**
@@ -67,6 +70,9 @@ public class ApplicationConfig extends JFinalConfig {
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(C3p0Plugin);
 		me.add(arp);
 		
+		// 配置mysql方言
+		arp.setDialect(new MysqlDialect());
+		
 		// 所有配置在 MappingKit 中搞定
 		_MappingKit.mapping(arp);
 	}
@@ -76,7 +82,6 @@ public class ApplicationConfig extends JFinalConfig {
 	 */
 	@Override
 	public void configInterceptor(Interceptors me) {
-		// TODO Auto-generated method stub
 
 	}
 
