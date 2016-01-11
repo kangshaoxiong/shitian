@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jetty.util.StringUtil;
 
 import com.jfinal.aop.Before;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.tx.Tx;
-import com.mchange.lang.StringUtils;
 
 /**
  * 用户Model：相当于entity+dao+service层
@@ -79,13 +79,13 @@ public class User extends Model<User>{
 	* @throws
 	 */
 	public static Page<User> getUserPage(int currPage,int pageSize,String name,String realityName){
-	   StringBuffer sql = new StringBuffer("select * from t_user where 1=1 ");
+	   StringBuffer sql = new StringBuffer("select * from t_users where 1=1 ");
 	   List<Object> params = new ArrayList<Object>();
-	   if(name!=null&&!"".equals(name)){
+	   if(StringUtils.isNotBlank(name)){
 		   sql.append(" and name like ? ");
 		   params.add("%"+name+"%");
 	   }
-	   if(realityName!=null&&!"".equals(realityName)){
+	   if(StringUtils.isNotBlank(realityName)){
 		   sql.append(" and realityName like ? ");
 		   params.add("%"+realityName+"%");
 	   }
