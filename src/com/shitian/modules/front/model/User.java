@@ -38,6 +38,11 @@ public class User extends Model<User>{
 		return new User()._setAttrs(userMap).save();
 	}
 	
+	@Before(Tx.class)
+	public static boolean addUserOfModel(User user){
+		return new User()._setAttrs(user).save();
+	}
+	
 	/**
 	 * 更新用户信息
 	* @Title: updateUser
@@ -50,6 +55,11 @@ public class User extends Model<User>{
 	@Before(Tx.class)
 	public static boolean updateUser(long id,Map<String,Object> userMap){
 		return User.dao.findById(id)._setAttrs(userMap).update();
+	}
+	
+	@Before(Tx.class)
+	public static boolean updateUserOfModel(long id,User user){
+		return User.dao.findById(id)._setAttrs(user).update();
 	}
 	
 	/**
