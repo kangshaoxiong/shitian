@@ -30,7 +30,6 @@ public class UserController extends Controller{
 	 * 所有用户列表
 	 */
 	public void allUsers(){
-		System.out.println(User.getUserPage(getParaToInt("currentPage",1),getParaToInt("pageSize",10),"",""));
 		setAttr("userPage",User.getUserPage(getParaToInt("currentPage",1),getParaToInt("pageSize",10),"",""));
 		render("allUsers.html");
 	} 

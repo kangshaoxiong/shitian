@@ -1,0 +1,39 @@
+<#include "/common/_front_layout.html"/> <@layout>
+<h1>
+	用户管理&nbsp;&nbsp; <a href="/front/user/allUsers">用户列表</a>
+</h1>
+<div class="table_box">
+	<form action="/front/user/updateUser">
+	<input type="hidden" name="userId"/>
+	<table>
+		<tr>
+			<th colspan="2">更新用户</th>
+		</tr>
+		<tr>
+			<td>用户名：</td>
+			<td><input type="text" name="user.name" value="${(user.name)!''}"></input></td>
+		</tr>
+		<tr>
+			<td>真实姓名：</td>
+			<td><input type="text" name="user.realityName" value="${(user.realityName)!''}"></input></td>
+		</tr>
+		<tr>
+			<td>手机号码：</td>
+			<td><input type="text" name="user.mobile" value="${(user.mobile)!''}"></input></td>
+		</tr>
+		<tr>
+			<td>身份证号码：</td>
+			<td><input type="text" name="user.cardId" value="${(user.cardId)!''}"></input></td>
+		</tr>
+		<tr>
+			<td>email：</td>
+			<td><input type="text" name="user.email" value="${(user.email)!''}"></input></td>
+		</tr>
+		<tr>
+			<td><input type="submit" value="提交"/></td>
+			<td><input type="reset" value="重置"/></td>
+		</tr>
+	</table>
+	</form>
+</div>
+</@layout>
