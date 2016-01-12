@@ -59,7 +59,7 @@ public class UserController extends Controller{
 	 * 添加用户
 	 */
 	public void addUser(){
-		//方式一:页面user.XXX只要XXX
+		//方式一:页面user.XXX修改为XXX
 		/*Map<String,Object> map = new HashMap<String,Object>();
 		map.put("name",getPara("name","丽丽"));
 		map.put("realityName", getPara("realityName", "唐丽"));
@@ -93,7 +93,7 @@ public class UserController extends Controller{
 	 * 更新用户
 	 */
 	public void updateUser(){
-		//方式一
+		//方式一：页面user.XXX修改为XXX
 		/*Map<String,Object> map = new HashMap<String,Object>();
 		map.put("name",getPara("name","丽丽"));
 		map.put("realityName", getPara("realityName", "唐丽"));
